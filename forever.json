@@ -1,0 +1,5 @@
+{
+    "uid": "node-netflow-ntopng",
+    "append": true,
+    "script": "index.js"
+}

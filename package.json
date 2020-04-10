@@ -1,0 +1,15 @@
+{
+  "name": "node-netflow-ntopng",
+  "version": "1.0.0",
+  "description": "Collects Cisco NetFlow flows and transforms them into JSON for ntopng to consume via ZMQ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Damien Walsh <me@damow.net>",
+  "license": "ISC",
+  "dependencies": {
+    "node-netflowv9": "^0.2.16",
+    "zeromq": "5"
+  }
+}
