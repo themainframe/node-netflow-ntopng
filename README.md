@@ -9,7 +9,7 @@ You can use this in concert with the [Traffic Flow](https://help.mikrotik.com/do
 Pretty hacky at the minute, sorry. Either edit the script or use the following environment variables:
 
 * `NETFLOW_NTOPNG_ZMQ` - The ZMQ URL to bind to and listen for `ntopng` to subscribe to flow information. `tcp://0.0.0.0:5556` by default.
-* `NETFLOW_NTOPNG_NF_PORT` - The port number on which to bind and listen for Netflow traffic.
+* `NETFLOW_NTOPNG_NF_PORT` - The port number on which to bind and listen for Netflow traffic. `3000` by default.
 
 ## Caveats
 

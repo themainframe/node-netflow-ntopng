@@ -5,9 +5,13 @@ var Collector = require('node-netflowv9');
 var zmq = require("zeromq");
 var sock = zmq.socket("pub");
 
+// Configuration
+var zmqUrl = process.env.hasOwnProperty('NETFLOW_NTOPNG_ZMQ') ? process.env.NETFLOW_NTOPNG_ZMQ : "tcp://0.0.0.0:5556";
+var netflowPort = process.env.hasOwnProperty('NETFLOW_NTOPNG_NF_PORT') ? process.env.NETFLOW_NTOPNG_NF_PORT : "3000";
+
 // Bind ZMQ socket
-sock.bindSync(process.env.hasOwnProperty('NETFLOW_NTOPNG_ZMQ') ? process.env.NETFLOW_NTOPNG_ZMQ : "tcp://0.0.0.0:5556");
-console.log("zmq producer bound", process.env.hasOwnProperty('NETFLOW_NTOPNG_ZMQ') ? process.env.NETFLOW_NTOPNG_ZMQ : "tcp://0.0.0.0:5556");
+sock.bindSync(zmqUrl);
+console.log("ZMQ publisher listening on URL", zmqUrl);
 
 // Define the NetFlow field names mapped to their numbers
 // (https://www.ietf.org/rfc/rfc3954.txt)
@@ -77,6 +81,5 @@ Collector((burst) => {
 
     });
 
-}).listen(parseInt(
-    process.env.hasOwnProperty('NETFLOW_NTOPNG_NF_PORT') ? process.env.NETFLOW_NTOPNG_NF_PORT : "3000"
-));
+}).listen(parseInt(netflowPort));
+console.log("Netflow server listening on", netflowPort);
